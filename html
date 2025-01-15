@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+</body>
+</html>
+# First, navigate to the repository directory
+cd /Users/jessekriege/Desktop/Github\ VSCode/jessekriege.github.io
+
+# Stage the file for commit
+git add html
+
+# Commit the file with a message
+git commit -m "Add initial HTML file"
+
+# Push the changes to the remote repository
+git push origin main
+
+cd /Users/jessekriege/Desktop/Github\ VSCode/jessekriege.github.io
+git
+git add html 
+git commit -m "Add initial HTML file"
+git push origin main
+cd /Users/jessekriege/Desktop/Github\ VSCode/jessekriege.github.io
+# Assuming you are using GitHub Pages to publish your HTML file
+# Create a new branch called 'gh-pages'
+git checkout -b gh-pages
+
+# Push the 'gh-pages' branch to the remote repository
+git push origin gh-pages
+
+# Your site should be published at https://<username>.github.io/<repository-name>/
+git checkout -b gh-pages
+git push origin gh-pages
