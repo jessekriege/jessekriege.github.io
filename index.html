@@ -25,17 +25,58 @@
             height: 450px; /* Adjust the height as needed */
             border-radius: 50%; /* Makes the image circular */
         }
+        .gallery {
+            display: none; /* Initially hide the galleries */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            height: 0;
+            transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+        }
+        .gallery.show {
+            display: flex;
+            opacity: 1;
+            height: auto;
+        }
+        .gallery-item {
+            position: relative;
+            width: 22%; /* Adjusted width to fit four items in a row */
+            height: 200px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+        .more-link {
+            display: none; /* Hide the "more..." link initially */
+        }
     </style>
 </head>
 <body>
-<h1>Jesse Kriege</h1>
+
+<h1><a href="about.html">Jesse Kriege</a></h1>
 <img src="IMG_1300.jpeg" alt="Photo of Jesse Kriege" class="headshot">
-<p><a href="work.html">Work</a></p>
-<p><a href="projects.html">Projects</a></p>
-<p><a href="about.html">About & CV</a></p>
-</body>
-</html>
-<div class="gallery">
+<p><a href="javascript:void(0);" onclick="toggleGallery('workGallery', 'workMoreLink')">Work</a></p>
+
+<div id="workGallery" class="gallery">
     <div class="gallery-item">
         <img src="project1.jpg" alt="Project 1">
         <div class="overlay">
@@ -54,37 +95,75 @@
             <div class="text">Project 3</div>
         </div>
     </div>
+    <div class="gallery-item">
+        <img src="project4.jpg" alt="Project 4">
+        <div class="overlay">
+            <div class="text">Project 4</div>
+        </div>
+    </div>
 </div>
+<p id="workMoreLink" class="more-link"><a href="more_work.html">more...</a></p>
 
-<style>
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+<p><a href="javascript:void(0);" onclick="toggleGallery('projectsGallery', 'projectsMoreLink')">Projects</a></p>
+
+<div id="projectsGallery" class="gallery">
+    <div class="gallery-item">
+        <img src="project9.jpg" alt="Project 9">
+        <div class="overlay">
+            <div class="text">Project 9</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project10.jpg" alt="Project 10">
+        <div class="overlay">
+            <div class="text">Project 10</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project11.jpg" alt="Project 11">
+        <div class="overlay">
+            <div class="text">Project 11</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project12.jpg" alt="Project 12">
+        <div class="overlay">
+            <div class="text">Project 12</div>
+        </div>
+    </div>
+</div>
+<p id="projectsMoreLink" class="more-link"><a href="more_projects.html">more...</a></p>
+
+<script>
+    function toggleGallery(galleryId, moreLinkId) {
+        var gallery = document.getElementById(galleryId);
+        var moreLink = document.getElementById(moreLinkId);
+        var items = gallery.getElementsByClassName('gallery-item');
+        
+        if (gallery.classList.contains('show')) {
+            for (let i = items.length - 1; i >= 0; i--) {
+                setTimeout(() => {
+                    items[i].style.opacity = 0;
+                }, (items.length - 1 - i) * 200); // Delay each item by 200ms
+            }
+            setTimeout(() => {
+                gallery.classList.remove('show');
+                gallery.style.height = '0';
+                moreLink.style.display = 'none';
+            }, items.length * 200); // Wait for all items to fade out
+        } else {
+            gallery.classList.add('show');
+            gallery.style.height = 'auto';
+            moreLink.style.display = 'block';
+            for (let i = 0; i < items.length; i++) {
+                setTimeout(() => {
+                    items[i].style.opacity = 1;
+                }, i * 200); // Delay each item by 200ms
+            }
+        }
     }
-    .gallery-item {
-        position: relative;
-        width: 300px;
-        height: 200px;
-    }
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .overlay {
-        position: absolute;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    .gallery-item:hover .overlay {
-        opacity: 1;
-    }
-</style>
+</script>
+
+</body>
+</html>
+<style></style>
