@@ -51,6 +51,20 @@
             height: 100%;
             object-fit: cover;
         }
+        .gallery-item .hover-image {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .gallery-item:hover .cover-image {
+            display: none;
+        }
+        .gallery-item:hover .hover-image {
+            display: block;
+        }
         .overlay {
             position: absolute;
             bottom: 0;
@@ -78,27 +92,60 @@
 
 <div id="workGallery" class="gallery">
     <div class="gallery-item">
-        <img src="project1.jpg" alt="Project 1">
+        <img src="project 1.jpg" alt="Project 1 Cover" class="cover-image">
+        <img src="project 1 Alternate.jpg" alt="Project 1 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 1</div>
+            <div class="text">Opentrons Flex Robot</div>
         </div>
     </div>
     <div class="gallery-item">
-        <img src="project2.jpg" alt="Project 2">
+        <img src="project 3.jpeg" alt="Project 3 Cover" class="cover-image">
+        <img src="project 3 alternate.jpeg" alt="Project 3 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 2</div>
+            <div class="text">Opentrons Display System</div>
         </div>
     </div>
     <div class="gallery-item">
-        <img src="project3.jpg" alt="Project 3">
+        <img src="PLATEREADER.jpeg" alt="" class="cover-image">
+        <img src="Plate Reader .jpeg" alt="Project 3 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 3</div>
+            <div class="text">Automated Spectrophotometer</div>
         </div>
     </div>
     <div class="gallery-item">
-        <img src="project4.jpg" alt="Project 4">
+        <img src="ultima main.png" alt="Project 4 Cover" class="cover-image">
+        <img src="ultima project main.png" alt="Project 4 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 4</div>
+            <div class="text">Ultima Genomics</div>
+        </div>
+    </div>
+    <!-- New row of project gallery items -->
+    <div class="gallery-item">
+        <img src="project 5 main.png" alt="Project 5 Cover" class="cover-image">
+        <img src="project 5 alternate.png" alt="Project 5 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Biobank Plates</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="Project 4 main.png" alt="Project 6 Cover" class="cover-image">
+        <img src="Project 4 hover.png" alt="Project 6 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Opentrons OEM</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project 8 main.jpeg" alt="Project 7 Cover" class="cover-image">
+        <img src="project 8 alternate.jpeg" alt="Project 7 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Bloom Diagnostics</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project valley shield alternate.png" alt="Project 8 Cover" class="cover-image">
+        <img src="valley shield project alternate.png" alt="Project 8 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Valley Shield</div>
         </div>
     </div>
 </div>
@@ -108,27 +155,31 @@
 
 <div id="projectsGallery" class="gallery">
     <div class="gallery-item">
-        <img src="project9.jpg" alt="Project 9">
+        <img src="project 9.jpeg" alt="Project 9 Cover" class="cover-image">
+        <img src="Project 10 alternate.jpeg" alt="Project 9 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 9</div>
+            <div class="text">150 Year House</div>
         </div>
     </div>
     <div class="gallery-item">
-        <img src="project10.jpg" alt="Project 10">
+        <img src="IMG_1154.jpeg" alt="Project 10 Cover" class="cover-image">
+        <img src="project 11 alt.JPG" alt="Project 10 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 10</div>
+            <div class="text">1 Garment Design</div>
         </div>
     </div>
     <div class="gallery-item">
-        <img src="project11.jpg" alt="Project 11">
+        <img src="project 10 main.jpg" alt="Project 11 Cover" class="cover-image">
+        <img src="project 10 alt.jpeg" alt="Project 11 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 11</div>
+            <div class="text">Altar Works</div>
         </div>
     </div>
     <div class="gallery-item">
-        <img src="project12.jpg" alt="Project 12">
+        <img src="project 12.JPG" alt="Project 12 Cover" class="cover-image">
+        <img src="project 12 alt.JPG" alt="Project 12 Hover" class="hover-image">
         <div class="overlay">
-            <div class="text">Project 12</div>
+            <div class="text">Ritual Energy</div>
         </div>
     </div>
 </div>
@@ -166,4 +217,3 @@
 
 </body>
 </html>
-<style></style>
