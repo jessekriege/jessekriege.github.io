@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesse Kriege Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --light-green: #4CAF50;
+            --dark-green: #1B5E20;
+            --accent-green: #81C784;
+            --background: #F9FBF9;
+            --text-dark: #263238;
+            --text-light: #FFFFFF;
+            --hover-overlay: rgba(46, 125, 50, 0.85);
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-dark);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin: 2rem 0;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        h1 a:hover {
+            color: var(--light-green);
+        }
+
+        p {
+            padding: 1rem 0;
+        }
+
+        p a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        p a:hover {
+            background-color: var(--accent-green);
+            color: var(--text-dark);
+        }
+
+        .headshot {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.15);
+            border: 4px solid var(--accent-green);
+            transition: transform 0.3s ease;
+        }
+
+        .headshot:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            opacity: 0;
+            height: 0;
+            transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+            padding: 2rem 0;
+        }
+
+        .gallery.show {
+            display: flex;
+            opacity: 1;
+            height: auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            width: calc(25% - 24px);
+            height: 240px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .hover-image {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-item:hover .cover-image {
+            display: none;
+        }
+
+        .gallery-item:hover .hover-image {
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            background: var(--hover-overlay);
+            color: var(--text-light);
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay .text {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .more-link {
+            display: none;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .more-link a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .more-link a:hover {
+            background-color: var(--light-green);
+        }
+
+        .hidden-row {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-item {
+                width: calc(33.33% - 24px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                width: calc(50% - 24px);
+            }
+            body {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                width: 100%;
+            }
+            .headshot {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="about.html">Jesse Kriege</a></h1>
+    <img src="IMG_1300.jpeg" alt="Photo of Jesse Kriege" class="headshot">
+    <p><a href="javascript:void(0);" onclick="toggleGallery('workGallery', 'workMoreLink')">Work</a></p>
+
+    <div id="workGallery" class="gallery">
+        <div class="gallery-item">
+            <img src="project 1.jpg" alt="Project 1 Cover" class="cover-image">
+            <img src="project 1 Alternate.jpg" alt="Project 1 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Opentrons Flex Robot</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="project 3.jpeg" alt="Project 3 Cover" class="cover-image">
+            <img src="project 3 alternate.jpeg" alt="Project 3 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Opentrons Display System</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="PLATEREADER.jpeg" alt="" class="cover-image">
+            <img src="Plate Reader .jpeg" alt="Project 3 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Automated Spectrophotometer</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="ultima main.png" alt="Project 4 Cover" class="cover-image">
+            <img src="ultima project main.png" alt="Project 4 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Ultima Genomics</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="project 5 main.png" alt="Project 5 Cover" class="cover-image">
+            <img src="project 5 alternate.png" alt="Project 5 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Biobanking Plates</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="Project 4 main.png" alt="Project 6 Cover" class="cover-image">
+            <img src="Project 4 hover.png" alt="Project 6 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Opentrons OEM</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="project 8 main.jpeg" alt="Project 7 Cover" class="cover-image">
+            <img src="project 8 alternate.jpeg" alt="Project 7 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Bloom Diagnostics</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="project valley shield alternate.png" alt="Project 8 Cover" class="cover-image">
+            <img src="valley shield project alternate.png" alt="Project 8 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Valley Shield</div>
+            </div>
+        </div>
+        <div class="gallery-item hidden-row">
+            <img src="Queen_Creek_Rapid_Test_Registration.png" alt="Project 9 Cover" class="cover-image">
+            <img src="BLIS Main.jpeg" alt="Project 9 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Cloud Laboratory Information System</div>
+            </div>
+        </div>
+        <div class="gallery-item hidden-row">
+            <img src="X - 22.png" alt="img_2428.png" class="cover-image">
+            <img src="X - 9.png" alt="Project 10 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Apple Health Kit - PASC</div>
+            </div>
+        </div>
+        <div class="gallery-item hidden-row">
+            <img src="Screenshot 2025-01-17 at 2.04.53 AM.png" alt="Project 11 Cover" class="cover-image">
+            <img src="Screenshot 2025-01-17 at 2.04.53 AM.png" alt="Project 11 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">CommonPass Integration</div>
+            </div>
+        </div>
+        <div class="gallery-item hidden-row">
+            <img src="IMG_2428.PNG" alt="img_2428.png" class="cover-image">
+            <img src="IMG_2486.JPG" alt="Project 10 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">ConfirmD iOS & Android App</div>
+            </div>
+        </div>
+    </div>
+    <p id="workMoreLink" class="more-link"><a href="javascript:void(0);" onclick="showMoreItems('workGallery', 'workMoreLink')">more...</a></p>
+
+    <p><a href="javascript:void(0);" onclick="toggleGallery('projectsGallery', 'projectsMoreLink')">Projects</a></p>
+
+    <div id="projectsGallery" class="gallery">
+        <div class="gallery-item">
+            <img src="project 9.jpeg" alt="Project 9 Cover" class="cover-image">
+            <img src="Project 10 alternate.jpeg" alt="Project 9 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">150 Year House</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="IMG_1154.jpeg" alt="Project 10 Cover" class="cover-image">
+            <img src="project 11 alt.JPG" alt="Project 10 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">1 Garment Design</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="project 10 main.jpg" alt="Project 11 Cover" class="cover-image">
+            <img src="project 10 alt.jpeg" alt="Project 11 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Altar Works</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="project 12.JPG" alt="Project 12 Cover" class="cover-image">
+            <img src="project 12 alt.JPG" alt="Project 12 Hover" class="hover-image">
+            <div class="overlay">
+                <div class="text">Ritual Energy</div>
+            </div>
+        </div>
+    </div>
+    <p id="projectsMoreLink" class="more-link"><a href="more_projects.html">more...</a></p>
+
+    <script>
+        function toggleGallery(galleryId, moreLinkId) {
+            var gallery = document.getElementById(galleryId);
+            var moreLink = document.getElementById(moreLinkId);
+            var items = gallery.getElementsByClassName('gallery-item');
+            
+            if (gallery.classList.contains('show')) {
+                for (let i = items.length - 1; i >= 0; i--) {
+                    setTimeout(() => {
+                        items[i].style.opacity = 0;
+                    }, (items.length - 1 - i) * 200);
+                }
+                setTimeout(() => {
+                    gallery.classList.remove('show');
+                    gallery.style.height = '0';
+                    moreLink.style.display = 'none';
+                }, items.length * 200);
+            } else {
+                gallery.classList.add('show');
+                gallery.style.height = 'auto';
+                moreLink.style.display = 'block';
+                for (let i = 0; i < items.length; i++) {
+                    setTimeout(() => {
+                        items[i].style.opacity = 1;
+                    }, i * 200);
+                }
+            }
+        }
+
+        function showMoreItems(galleryId, moreLinkId) {
+            var gallery = document.getElementById(galleryId);
+            var moreLink = document.getElementById(moreLinkId);
+            var hiddenItems = gallery.getElementsByClassName('hidden-row');
+            for (let i = 0; i < hiddenItems.length; i++) {
+                hiddenItems[i].style.display = 'block';
+                setTimeout(() => {
+                    hiddenItems[i].style.opacity = 1;
+                }, i * 200);
+            }
+        }

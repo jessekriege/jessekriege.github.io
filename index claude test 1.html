@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        p {
+            padding: 10px 0;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+        .headshot {
+            width: 450px; /* Adjust the width as needed */
+            height: 450px; /* Adjust the height as needed */
+            border-radius: 50%; /* Makes the image circular */
+        }
+        .gallery {
+            display: none; /* Initially hide the galleries */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            height: 0;
+            transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+        }
+        .gallery.show {
+            display: flex;
+            opacity: 1;
+            height: auto;
+        }
+        .gallery-item {
+            position: relative;
+            width: 22%; /* Adjusted width to fit four items in a row */
+            height: 200px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensure the entire image is visible */
+        }
+        .gallery-item .hover-image {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .gallery-item:hover .cover-image {
+            display: none;
+        }
+        .gallery-item:hover .hover-image {
+            display: block;
+        }
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+        .more-link {
+            display: none; /* Hide the "more..." link initially */
+        }
+        .hidden-row {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1><a href="about.html">Jesse Kriege</a></h1>
+<img src="IMG_1300.jpeg" alt="Photo of Jesse Kriege" class="headshot">
+<p><a href="javascript:void(0);" onclick="toggleGallery('workGallery', 'workMoreLink')">Work</a></p>
+
+<div id="workGallery" class="gallery">
+    <div class="gallery-item">
+        <img src="project 1.jpg" alt="Project 1 Cover" class="cover-image">
+        <img src="project 1 Alternate.jpg" alt="Project 1 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Opentrons Flex Robot</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project 3.jpeg" alt="Project 3 Cover" class="cover-image">
+        <img src="project 3 alternate.jpeg" alt="Project 3 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Opentrons Display System</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="PLATEREADER.jpeg" alt="" class="cover-image">
+        <img src="Plate Reader .jpeg" alt="Project 3 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Automated Spectrophotometer</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="ultima main.png" alt="Project 4 Cover" class="cover-image">
+        <img src="ultima project main.png" alt="Project 4 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Ultima Genomics</div>
+        </div>
+    </div>
+    <!-- New row of project gallery items -->
+    <div class="gallery-item">
+        <img src="project 5 main.png" alt="Project 5 Cover" class="cover-image">
+        <img src="project 5 alternate.png" alt="Project 5 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Biobanking Plates</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="Project 4 main.png" alt="Project 6 Cover" class="cover-image">
+        <img src="Project 4 hover.png" alt="Project 6 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Opentrons OEM</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project 8 main.jpeg" alt="Project 7 Cover" class="cover-image">
+        <img src="project 8 alternate.jpeg" alt="Project 7 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Bloom Diagnostics</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project valley shield alternate.png" alt="Project 8 Cover" class="cover-image">
+        <img src="valley shield project alternate.png" alt="Project 8 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Valley Shield</div>
+        </div>
+    </div>
+    <!-- Additional new row of project gallery items -->
+    <div class="gallery-item hidden-row">
+        <img src="Queen_Creek_Rapid_Test_Registration.png" alt="Project 9 Cover" class="cover-image">
+        <img src="BLIS Main.jpeg" alt="Project 9 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Cloud Laboratory Information System </div>
+        </div>
+    </div>
+    <!-- Additional new hidden row of project gallery items -->
+    <div class="gallery-item hidden-row">
+        <img src="X - 22.png" alt="img_2428.png" class="cover-image">
+        <img src="X - 9.png" alt="Project 10 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Apple Health Kit - PASC</div>
+        </div>
+    </div>
+    <div class="gallery-item hidden-row">
+        <img src="Screenshot 2025-01-17 at 2.04.53 AM.png" alt="Project 11 Cover" class="cover-image">
+        <img src="Screenshot 2025-01-17 at 2.04.53 AM.png" alt="Project 11 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">CommonPass Integration</div>
+        </div>
+    </div>
+    <div class="gallery-item hidden-row">
+        <img src="IMG_2428.PNG" alt="img_2428.png" class="cover-image">
+        <img src="IMG_2486.JPG" alt="Project 10 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">ConfirmD iOS & Android App</div>
+        </div>
+    </div>
+    <!-- New project gallery row -->
+    <div class="gallery-item hidden-row">
+        <img src="1724214641312.jpg" alt="Project 11 Cover" class="cover-image">
+        <img src="1724214641312.jpg" alt="Project 11 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">LA County Digital Triage Web App</div>
+        </div>
+    </div>
+    <div class="gallery-item hidden-row">
+        <img src="Screenshot 2025-01-17 at 3.22.46 AM.png" alt="Project 12 Cover" class="cover-image">
+        <img src="Screenshot 2025-01-17 at 3.22.46 AM.png" alt="Project 12 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Checkup Checklist iOS & Android App</div>
+        </div>
+    </div>
+    <div class="gallery-item hidden-row">
+        <img src="Screenshot 2025-01-17 at 4.01.45 AM.png" alt="New Project 4 Cover" class="cover-image">
+        <img src="Screenshot 2025-01-17 at 4.01.33 AM.png" alt="New Project 4 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">ChristianaCare MAU-PCP</div>
+        </div>
+    </div>
+        </div>
+    </div>
+    <div class="gallery-item hidden-row">
+        <img src="1724214641312.jpg" alt="Project 11 Cover" class="cover-image">
+        <img src="1724214641312.jpg" alt="Project 11 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">LA County Digital Triage Web App</div>
+        </div>
+    </div>
+    <div class="gallery-item hidden-row">
+        <img src="Screenshot 2025-01-17 at 3.22.46 AM.png" alt="Project 12 Cover" class="cover-image">
+        <img src="Screenshot 2025-01-17 at 3.22.46 AM.png" alt="Project 12 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Checkup Checklist iOS & Android App</div>
+        </div>
+    </div>
+    <div class="gallery-item hidden-row">
+        <img src="Screenshot 2025-01-17 at 4.01.45 AM.png" alt="New Project 4 Cover" class="cover-image">
+        <img src="Screenshot 2025-01-17 at 4.01.33 AM.png" alt="New Project 4 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">ChristianaCare MAU-PCP</div>
+        </div>
+    </div>
+</div>
+<p id="workMoreLink" class="more-link"><a href="javascript:void(0);" onclick="showMoreItems('workGallery', 'workMoreLink')">more...</a></p>
+
+<p><a href="javascript:void(0);" onclick="toggleGallery('projectsGallery', 'projectsMoreLink')">Projects</a></p>
+
+<div id="projectsGallery" class="gallery">
+    <div class="gallery-item">
+        <img src="project 9.jpeg" alt="Project 9 Cover" class="cover-image">
+        <img src="Project 10 alternate.jpeg" alt="Project 9 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">150 Year House</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="IMG_1154.jpeg" alt="Project 10 Cover" class="cover-image">
+        <img src="project 11 alt.JPG" alt="Project 10 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">1 Garment Design</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project 10 main.jpg" alt="Project 11 Cover" class="cover-image">
+        <img src="project 10 alt.jpeg" alt="Project 11 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Altar Works</div>
+        </div>
+    </div>
+    <div class="gallery-item">
+        <img src="project 12.JPG" alt="Project 12 Cover" class="cover-image">
+        <img src="project 12 alt.JPG" alt="Project 12 Hover" class="hover-image">
+        <div class="overlay">
+            <div class="text">Ritual Energy</div>
+        </div>
+    </div>
+</div>
+<p id="projectsMoreLink" class="more-link"><a href="more_projects.html">more...</a></p>
+
+<script>
+    function toggleGallery(galleryId, moreLinkId) {
+        var gallery = document.getElementById(galleryId);
+        var moreLink = document.getElementById(moreLinkId);
+        var items = gallery.getElementsByClassName('gallery-item');
+        
+        if (gallery.classList.contains('show')) {
+            for (let i = items.length - 1; i >= 0; i--) {
+                setTimeout(() => {
+                    items[i].style.opacity = 0;
+                }, (items.length - 1 - i) * 200); // Delay each item by 200ms
+            }
+            setTimeout(() => {
+                gallery.classList.remove('show');
+                gallery.style.height = '0';
+                moreLink.style.display = 'none';
+            }, items.length * 200); // Wait for all items to fade out
+        } else {
+            gallery.classList.add('show');
+            gallery.style.height = 'auto';
+            moreLink.style.display = 'block';
+            for (let i = 0; i < items.length; i++) {
+                setTimeout(() => {
+                    items[i].style.opacity = 1;
+                }, i * 200); // Delay each item by 200ms
+            }
+        }
+    }
+
+    function showMoreItems(galleryId, moreLinkId) {
+        var gallery = document.getElementById(galleryId);
+        var moreLink = document.getElementById(moreLinkId);
+        var hiddenItems = gallery.getElementsByClassName('hidden-row');
+        
+        for (let i = 0; i < hiddenItems.length; i++) {
+            hiddenItems[i].style.display = 'block';
+            setTimeout(() => {
+                hiddenItems[i].style.opacity = 1;
+            }, i * 200); // Delay each item by 200ms
+        }
+        moreLink.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
